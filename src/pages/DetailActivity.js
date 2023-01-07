@@ -13,7 +13,7 @@ const DetailActivity = () => {
         axiosConfig.get('/activity-groups/'+id)
             .then(response => {return response.data})
             .then(resp => {setActivity(resp)})
-    },[])
+    },[id])
 
     return(
         <>
