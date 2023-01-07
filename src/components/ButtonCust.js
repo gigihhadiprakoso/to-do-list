@@ -13,7 +13,6 @@ const ButtonCust = (props) => {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
                     </svg>
                 );
-                break;
             default:
                 break;
         }
@@ -22,8 +21,7 @@ const ButtonCust = (props) => {
     const getBgColor = (param) => {
         switch (param) {
             case 'info':
-                return 'bg-sky-500'
-                break;
+                return 'bg-sky-500';
         
             default:
                 break;
