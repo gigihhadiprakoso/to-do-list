@@ -17,7 +17,7 @@ const ModalEdit = (props) => {
                         Simpan
                     </button>
                 )
-                break;
+                
             case 'close':
                 return(
                     <button 
@@ -28,7 +28,7 @@ const ModalEdit = (props) => {
                         Close
                     </button>
                 )
-                break;
+                
             default:
                 break;
         }
@@ -61,12 +61,12 @@ const ModalEdit = (props) => {
                                                     <option>Very High</option>
                                                 </select>
                                             )
-                                            break;
+                                            
                                         case 'text':
                                             return (
                                                 <input type="text" className="w-full" />
                                             )
-                                            break;
+                                            
                                         default:
                                             break;
                                     }
