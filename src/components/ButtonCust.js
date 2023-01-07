@@ -1,6 +1,4 @@
-import {
-  Button,
-  Modal,} from 'flowbite-react'
+
 
 const ButtonCust = (props) => {
     const icon = props.icon
