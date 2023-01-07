@@ -6,7 +6,7 @@ const Todos = (props) =>{
     const items = props.items
 
     const [showModal, setShowModal] = React.useState(false);
-    const [dataModal, setDataModal] = React.useState([]);
+    // const [dataModal, setDataModal] = React.useState([]);
     // const [buttonModal, setButtonModal] = React.useState([])
 
     const fields = [
@@ -23,7 +23,7 @@ const Todos = (props) =>{
                     closeModal={() => {setShowModal(false)}} 
                     title='Edit Item'
                     fields={fields}
-                    rows={dataModal}
+                    // rows={dataModal}
                     buttons={buttons}
                 /> 
                 : 
