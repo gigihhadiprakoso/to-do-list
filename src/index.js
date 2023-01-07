@@ -3,11 +3,32 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import Activities from './pages/Activities';
+import DetailActivity from './pages/DetailActivity';
+
+import {
+  BrowserRouter as ParentRouter,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    {/* <App /> */}
+    <ParentRouter>
+      <Routes>
+        <Route 
+          path="/detail/:id" 
+          element={<DetailActivity />}
+        />
+        <Route 
+          path="/" 
+          element={<Activities />} 
+        />
+      </Routes>
+    </ParentRouter>
   </React.StrictMode>
 );
 
