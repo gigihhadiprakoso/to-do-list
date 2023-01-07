@@ -4,7 +4,7 @@ const ModalEdit = (props) => {
         title,
         closeModal,
         buttons,
-        fields, rows
+        fields
     } = props
 
     const showButton = (type) => {
