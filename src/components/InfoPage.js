@@ -40,7 +40,7 @@ const InfoPage = (props) => {
                 { showRenameBtn ? <button onClick={() => {}}>{renameBtn()}</button> : <></>}
             </div>
             <div className='col-span-2 relative'>
-                { showAddBtn == true ? 
+                { showAddBtn ? 
                 <ButtonCust 
                     value="Tambah" 
                     icon="plus" 
