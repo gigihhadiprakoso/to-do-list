@@ -9,7 +9,7 @@ const Card = (props) => {
     const url = props.url
 
     return(
-        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg p-2" key={id}>
+        <div className="max-w-sm rounded-lg overflow-hidden shadow-lg p-2" key={id} data-cy="card-list-activity">
             { url ?
                 <Link to={url}>
                     <div className="px-6 py-4 pb-14">

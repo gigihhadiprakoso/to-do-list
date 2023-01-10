@@ -24,7 +24,7 @@ const DotPriority = (props) => {
 
 
     return(
-        <div className={`rounded-full w-4 h-4 my-auto ${getColor(level)}`}></div>
+        <div className={`rounded-full w-4 h-4 my-auto ${getColor(level)}`} data-cy="dot-priority"></div>
     )
 }
 

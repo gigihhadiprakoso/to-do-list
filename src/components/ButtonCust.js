@@ -33,7 +33,7 @@ const ButtonCust = (props) => {
     const style = 'rounded-full float-right px-5 py-2.5 text-center inline-flex items-center mr-2 leading-tight transition duration-150 ease-in-out '+colorText+' '+getBgColor(type);
 
     return (
-        <button className={style} type="button" data-modal-target="default" data-modal-toggle="defaultModal"> 
+        <button className={style} type="button" data-modal-target="default" data-modal-toggle="defaultModal" data-cy="button-add"> 
             {getIcon(icon)} 
             {value}
         </button>

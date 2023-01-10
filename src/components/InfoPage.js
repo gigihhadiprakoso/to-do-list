@@ -33,7 +33,7 @@ const InfoPage = (props) => {
     }
 
     return (
-        <div className='container grid grid-cols-4 py-4'>
+        <div className='container grid grid-cols-4 py-4' data-cy="info-page">
             <div className='col-start-1 col-span-2 inline-flex'>
                 { showBackBtn ?  <button onClick={handleBackBtn}>{backBtn()}</button> : <></>}
                 <Title script={titlePage}/>  
