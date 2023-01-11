@@ -42,7 +42,7 @@ const TodoItem = (props) => {
         <div className="rounded-lg shadow-xl px-10 py-8 overflow-hidden bg-white mb-4 text-xl font-bold" key={id}>
             <div className="grid grid-cols-8">
                 <div className="col-span-6 inline-flex gap-x-6">
-                    <div className="content-center form-check">
+                    <div className="content-center form-check" data-cy="todo-item-checkbox">
                         <input type="checkbox" 
                             className="
                                 form-check-input
@@ -63,7 +63,7 @@ const TodoItem = (props) => {
                     <DotPriority 
                         level={priority}
                     />
-                    <label className={classTitle}>{title}</label>
+                    <label className={classTitle} data-cy="todo-title">{title}</label>
                     <button onClick={() => { onEdit(true)}}>{renameBtn()}</button>
                 </div>
                 <div className="col-span-2">

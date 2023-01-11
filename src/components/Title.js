@@ -1,7 +1,7 @@
 
 const Title = ({script}) => {
     return (
-        <label className="text-4xl font-extrabold">
+        <label className="text-4xl font-extrabold" data-cy="activity-title">
             {script}
         </label>
     )
