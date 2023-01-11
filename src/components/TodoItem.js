@@ -57,7 +57,8 @@ const TodoItem = (props) => {
                                 float-left mr-2
                                 cursor-pointer "
                             defaultChecked={isActive}
-                            onChange={handleChangeCheckbox}/>
+                            onChange={handleChangeCheckbox}
+                            data-cy="todo-item-checkbox"/>
                     </div>
                     <DotPriority 
                         level={priority}
@@ -67,7 +68,7 @@ const TodoItem = (props) => {
                 </div>
                 <div className="col-span-2">
                     <div className="float-right">
-                        <button>{deleteBtn()}</button>
+                        <button data-cy="todo-item-delete-button">{deleteBtn()}</button>
                     </div>
                 </div>
             </div>

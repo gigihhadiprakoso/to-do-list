@@ -36,7 +36,7 @@ const InfoPage = (props) => {
         <div className='container grid grid-cols-4 py-4' data-cy="info-page">
             <div className='col-start-1 col-span-2 inline-flex'>
                 { showBackBtn ?  <button onClick={handleBackBtn}>{backBtn()}</button> : <></>}
-                <Title script={titlePage}/>  
+                <Title script={titlePage} data-cy="activity-title"/>  
                 { showRenameBtn ? <button onClick={() => {}}>{renameBtn()}</button> : <></>}
             </div>
             <div className='col-span-2 relative'>
@@ -44,7 +44,8 @@ const InfoPage = (props) => {
                 <ButtonCust 
                     value="Tambah" 
                     icon="plus" 
-                    type="info"/>
+                    type="info"
+                    data-cy="activity-add-button"/>
                     :
                     <></>
                 }
