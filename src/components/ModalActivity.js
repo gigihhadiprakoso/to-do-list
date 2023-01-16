@@ -93,7 +93,7 @@ const ModalActivity = (props) => {
                                 focus:outline-none 
                                 ease-linear transition-all duration-150"
                             onClick={handleConfirmDelete}
-                            data-cy="modal-delete"
+                            data-cy="modal-delete-confirm-button"
                         >
                             Hapus
                         </button>
