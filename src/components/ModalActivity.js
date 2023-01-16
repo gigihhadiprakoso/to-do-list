@@ -74,6 +74,7 @@ const ModalActivity = (props) => {
                                 ease-linear transition-all duration-150
                             "
                             onClick={() => isShowModal(false)}
+                            data-cy="modal-delete-cancel-button"
                         >
                             Batal
                         </button>
@@ -92,6 +93,7 @@ const ModalActivity = (props) => {
                                 focus:outline-none 
                                 ease-linear transition-all duration-150"
                             onClick={handleConfirmDelete}
+                            data-cy="modal-delete"
                         >
                             Hapus
                         </button>
