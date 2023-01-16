@@ -22,16 +22,19 @@ const Card = (props) => {
             { url ?
                 <Link to={url}>
                     <div className="px-6 py-4 pb-14">
-                        <div className="font-bold text-xl mb-2">{title}</div>
+                        <div className="font-bold text-xl mb-2" data-cy="activity-item-title">{title}</div>
                     </div>
                 </Link>
                 :
                 <div className="px-6 py-4 pb-14">
-                    <div className="font-bold text-xl mb-2">{title}</div>
+                    <div className="font-bold text-xl mb-2" data-cy="activity-item-title">{title}</div>
                 </div>
             }
             <div className="px-6 pt-4 pb-2 grid grid-cols-4">
-                <div className="col-span-2">
+                <div 
+                    className="col-span-2"
+                    data-cy="activity-item-date"
+                >
                     <p className="text-gray-400">{date}</p>
                 </div>
                 <div className="col-span-2 float-right" data-cy="activity-item-delete-button">
