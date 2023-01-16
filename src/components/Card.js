@@ -1,7 +1,6 @@
 import {
     Link
 } from 'react-router-dom'
-import axiosConfig from '../services/axiosConfig';
 
 const Card = (props) => {
     const {
