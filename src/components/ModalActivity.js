@@ -11,10 +11,14 @@ const ModalActivity = (props) => {
     const [title, setTitle] = React.useState('');
 
     React.useEffect(() => {
-        axiosConfig.get('/activity-groups/'+idActivity)
-            .then(response => {return response.data})
-            .then(resp => {setTitle(resp.title)})
-    },[]);
+        const fetch = (id) => {
+            axiosConfig.get('/activity-groups/'+id)
+                .then(response => {return response.data})
+                .then(resp => {setTitle(resp.title)})
+        }
+
+        fetch(idActivity)
+    },[idActivity]);
 
     const handleConfirmDelete = () => {
         axiosConfig.delete('/activity-groups/'+idActivity,{})
