@@ -83,6 +83,7 @@ const DetailActivity = () => {
                                 transition duration-150 ease-in-out 
                                 bg-sky-500" 
                             type="button" 
+                            id="ButtonAddDetail"
                             data-cy="todo-add-button"
                             onClick={handleClickAdd}
                         > 

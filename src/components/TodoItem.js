@@ -64,7 +64,7 @@ const TodoItem = (props) => {
                         level={priority}
                     />
                     <div data-cy="todo-title">
-                        <label className={classTitle}>{title}</label>
+                        <label className={classTitle} data-cy="todo-title">{title}</label>
                     </div>
                     <button 
                         onClick={() => { 
