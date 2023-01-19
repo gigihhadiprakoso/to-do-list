@@ -22,7 +22,6 @@ const Todos = (props) =>{
                             key={item.id}
                             isShowModal={isShowModal}
                             setTitleModal={setTitleModal}
-                            setIdTodo={setIdTodo}
                         />
                     )
                 })

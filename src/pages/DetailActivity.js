@@ -97,7 +97,6 @@ const DetailActivity = () => {
                     items={activity.todo_items}
                     setTitleModal={setTitleModal}
                     isShowModal={setShowModal}
-                    setIdTodo={setIdTodo}
                 />
             </div>
         </>

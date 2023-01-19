@@ -9,7 +9,6 @@ const TodoItem = (props) => {
         priority,
         isActive,
         setTitleModal,
-        setIdTodo
     } = props
 
     const [classTitle, setClassTitle] = React.useState(isActive ? "line-through text-gray-400":"" ); 
@@ -71,7 +70,6 @@ const TodoItem = (props) => {
                         onClick={() => { 
                             // isShowModal(true)
                             setTitleModal('Edit Item')
-                            setIdTodo(id)
                         }}
                     >
                         {renameBtn()}
