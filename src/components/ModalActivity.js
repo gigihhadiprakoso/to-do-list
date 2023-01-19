@@ -30,8 +30,8 @@ const ModalActivity = (props) => {
 
     return (
         <>
-        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none" id="ModalDelete" data-cy="todo-modal-delete">
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+        <div className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none w-auto my-6 mx-auto max-w-3xl" id="ModalDelete" data-cy="todo-modal-delete">
+            {/* <div className="relative w-auto my-6 mx-auto max-w-3xl"> */}
 
                 {/*content*/}
                 <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -52,9 +52,11 @@ const ModalActivity = (props) => {
                         items-center justify-center"
                     >
                         <div className="justify-center">
+                            <div data-cy="contained-modal-title-vcenter">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-28 h-28 stroke-red-500 text-center items-center">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                             </svg>
+                            </div>
                             Apakah anda yakin ingin menghapus activity <strong>"{title}"</strong>
                         </div>
                     </div>
@@ -99,7 +101,7 @@ const ModalActivity = (props) => {
                         </button>
                     </div>
                 </div>
-            </div>
+            {/* </div> */}
         </div>
         <div 
             className="opacity-25 fixed inset-0 z-40 bg-black"
