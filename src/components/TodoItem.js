@@ -8,7 +8,9 @@ const TodoItem = (props) => {
         title,
         priority,
         isActive,
-        onEdit
+        isShowModal,
+        setTitleModal,
+        setIdTodo
     } = props
 
     const [classTitle, setClassTitle] = React.useState(isActive ? "line-through text-gray-400":"" ); 
@@ -63,8 +65,18 @@ const TodoItem = (props) => {
                     <DotPriority 
                         level={priority}
                     />
-                    <label className={classTitle} data-cy="todo-title">{title}</label>
-                    <button onClick={() => { onEdit(true)}}>{renameBtn()}</button>
+                    <div data-cy="todo-title">
+                        <label className={classTitle}>{title}</label>
+                    </div>
+                    <button 
+                        onClick={() => { 
+                            // isShowModal(true)
+                            setTitleModal('Edit Item')
+                            setIdTodo(id)
+                        }}
+                    >
+                        {renameBtn()}
+                    </button>
                 </div>
                 <div className="col-span-2">
                     <div className="float-right">
