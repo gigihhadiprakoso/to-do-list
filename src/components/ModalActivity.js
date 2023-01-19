@@ -62,9 +62,10 @@ const ModalActivity = (props) => {
                     </div>
                     
                     {/*footer*/}
-                    <div className="flex items-center p-6 rounded-b content-center">
+                    <div className="flex items-center p-6 rounded-b content-center modal-footer">
                         <button
                             className="
+                                btn
                                 bg-slate-200
                                 rounded-full
                                 font-bold 
