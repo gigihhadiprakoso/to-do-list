@@ -12,7 +12,6 @@ const DetailActivity = () => {
     const [showModal, setShowModal] = React.useState(false);
     const [titleModal, setTitleModal] = React.useState('');
     const [activity, setActivity] = React.useState([]);
-    const [idTodo, setIdTodo] = React.useState();
     const [clickedSaveModal, setClickedSaveModal] = React.useState(0);
     
     const {id} = useParams();

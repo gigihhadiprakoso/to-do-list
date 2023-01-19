@@ -8,7 +8,6 @@ const TodoItem = (props) => {
         title,
         priority,
         isActive,
-        isShowModal,
         setTitleModal,
         setIdTodo
     } = props

@@ -1,5 +1,4 @@
 import * as React from "react";
-import DotPriority from "./DotPriority";
 import axiosConfig from '../services/axiosConfig'
 
 const ModalTodo = (props) => {
