@@ -5,8 +5,7 @@ const Todos = (props) =>{
     const {
         items,
         setTitleModal,
-        isShowModal,
-        setIdTodo
+        isShowModals
     } = props
 
     return(
