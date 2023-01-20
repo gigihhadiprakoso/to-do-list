@@ -14,7 +14,7 @@ const Activities = () => {
     const [IDActivity, setIDActivity] = React.useState('');
 
     React.useEffect(() => {
-        axiosConfig.get('/activity-groups')
+        axiosConfig.get('/activity-groups?email=ivan@skyshi.com')
             .then(response => {return response.data.data})
             .then(resp => {setActivities(resp)})
     },[sumClicked]);
@@ -85,6 +85,7 @@ const Activities = () => {
                     )
                 })}
                 <div data-cy="modal-delete"></div>
+                <div data-cy="modal-information"></div>
                 </div>
             </div>
         </>
