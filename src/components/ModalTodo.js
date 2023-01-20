@@ -62,8 +62,8 @@ const ModalTodo = (props) => {
                                             ...bodyReq,
                                             priority: e.target.value 
                                         })
-                                    }}>
-                                    <option value="very-high">
+                                    }} data-cy="modal-add-priority-dropdown">
+                                    <option value="very-high" >
                                         Very High
                                     </option>
                                     <option value="high">
@@ -100,6 +100,7 @@ const ModalTodo = (props) => {
                                     ease-linear transition-all duration-150"
                                 data-cy="modal-add-save-button"
                                 onClick={handleSave}
+                                disabled={!(bodyReq.hasOwnProperty('title') && bodyReq.title ? true : false)}
                             >
                                 Simpan
                             </button>
