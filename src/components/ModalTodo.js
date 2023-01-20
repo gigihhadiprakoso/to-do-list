@@ -38,15 +38,14 @@ const ModalTodo = (props) => {
 
                         {/*body*/}
                         <div className="p-6 flex-auto">
-                            <div>
-                                <p data-cy="modal-add-name-input">Nama List Item</p>
+                            <div data-cy="modal-add-name-input">
+                                <p>Nama List Item</p>
                                 <input 
                                     className="
                                         px-2 py-3 w-full 
                                         border-solid focus:outline-2 focus:ring-sky-500
                                         rounded-md" 
                                     placeholder="Tambahkan nama Activity"
-                                    data-cy="modal-add-name-input"
                                     onChange={(e) => {
                                         setBodyReq({
                                             ...bodyReq,
@@ -55,8 +54,8 @@ const ModalTodo = (props) => {
                                     }}
                                 />
                             </div>
-                            <div>
-                                <p data-cy="modal-add-priority-title">Priority</p>
+                            <div data-cy="modal-add-priority-title">
+                                <p>Priority</p>
                                 <select
                                     onChange={(e) => {
                                         setBodyReq({
