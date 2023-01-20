@@ -66,7 +66,9 @@ const DetailActivity = () => {
                 <div className='container grid grid-cols-4 py-4' data-cy="info-page">
                     <div className='col-start-1 col-span-2 inline-flex'>
                         <button onClick={handleBackBtn}>{backBtn()}</button>
-                        <Title script={activity.title}/>
+                        <label className="text-4xl font-extrabold" data-cy="todo-title">
+                            {activity.title}
+                        </label>
                         <button onClick={() => {}}>{renameBtn()}</button>
                     </div>
                     <div className='col-span-2 relative'>
@@ -94,11 +96,15 @@ const DetailActivity = () => {
                         </button>
                     </div>
                 </div>
-                <Todos 
-                    items={activity.todo_items}
-                    setTitleModal={setTitleModal}
-                    isShowModal={setShowModal}
-                />
+                { activity.todo_items.length >0 ?
+                    <Todos 
+                        items={activity.todo_items}
+                        setTitleModal={setTitleModal}
+                        isShowModal={setShowModal}
+                    />
+                    :
+                    <div data-cy="todo-empty-state"></div>
+                }
             </div>
         </>
     )
