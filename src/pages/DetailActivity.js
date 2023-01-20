@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import Navbar from "../components/Navbar";
-import Title from "../components/Title";
 import * as React from "react";
 import axiosConfig from '../services/axiosConfig';
 import Todos from "../components/Todos";
