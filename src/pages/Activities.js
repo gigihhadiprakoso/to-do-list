@@ -15,7 +15,7 @@ const Activities = () => {
 
     React.useEffect(() => {
         const fetch = async () => { 
-            await axiosConfig.get('/activity-groups?email=ivan@skyshi.com')
+            await axiosConfig.get('/activity-groups?email=abc@example.id')
                 .then(response => {return response.data.data})
                 .then(resp => {setActivities(resp)})
         }
@@ -26,7 +26,7 @@ const Activities = () => {
     const handleClickAdd = async () => {
         let clicked = sumClicked + 1;
 
-        const data = {title: 'New Activity'}
+        const data = {title: 'New Activity', email:'abc@example.id'}
         await axiosConfig.post('/activity-groups',data)
             .then(response => {return response.data.data})
             .then(resp => {setSumClicked(clicked)})
