@@ -113,7 +113,7 @@ const DetailActivity = () => {
                         </button>
                     </div>
                 </div>
-                { activity.length >0 ?
+                { activity.hasOwnProperty('todo_items') && activity.todo_items.length > 0  ?
                     <Todos 
                         items={activity.todo_items}
                         setTitleModal={setTitleModal}
