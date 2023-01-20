@@ -95,7 +95,7 @@ const DetailActivity = () => {
                         </button>
                     </div>
                 </div>
-                { activity.todo_items.length >0 ?
+                { activity.length >0 ?
                     <Todos 
                         items={activity.todo_items}
                         setTitleModal={setTitleModal}
