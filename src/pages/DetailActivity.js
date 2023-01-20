@@ -68,7 +68,7 @@ const DetailActivity = () => {
                     <div className='col-start-1 col-span-2 inline-flex'>
                         <button onClick={handleBackBtn}>{backBtn()}</button>
                         { isEditTitle ?
-                            <input onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle}/>
+                            <input onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle} autoFocus/>
                             :
                             <label className="text-4xl font-extrabold" data-cy="todo-title">
                                 {activity.title}
@@ -122,6 +122,7 @@ const DetailActivity = () => {
                     :
                     <div data-cy="todo-empty-state"></div>
                 }
+                <div data-cy="modal-add"></div>
             </div>
         </>
     )
