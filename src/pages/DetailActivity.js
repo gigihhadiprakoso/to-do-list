@@ -65,10 +65,10 @@ const DetailActivity = () => {
             }
             <div className='px-14'>
                 <div className='container grid grid-cols-4 py-4' data-cy="info-page">
-                    <div className='col-start-1 col-span-2 inline-flex'>
+                    <div className='col-start-1 col-span-2 inline-flex' data-cy="todo-title">
                         <button onClick={handleBackBtn}>{backBtn()}</button>
                         { isEditTitle ?
-                            <input onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle} autoFocus/>
+                            <input type="text" onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle} autoFocus/>
                             :
                             <label className="text-4xl font-extrabold" data-cy="todo-title">
                                 {activity.title}
