@@ -14,16 +14,20 @@ const Activities = () => {
     const [IDActivity, setIDActivity] = React.useState('');
 
     React.useEffect(() => {
-        axiosConfig.get('/activity-groups?email=ivan@skyshi.com')
-            .then(response => {return response.data.data})
-            .then(resp => {setActivities(resp)})
+        const fetch = async () => { 
+            await axiosConfig.get('/activity-groups?email=ivan@skyshi.com')
+                .then(response => {return response.data.data})
+                .then(resp => {setActivities(resp)})
+        }
+
+        fetch();
     },[sumClicked]);
 
-    const handleClickAdd = () => {
+    const handleClickAdd = async () => {
         let clicked = sumClicked + 1;
 
         const data = {title: 'New Activity'}
-        axiosConfig.post('/activity-groups',data)
+        await axiosConfig.post('/activity-groups',data)
             .then(response => {return response.data.data})
             .then(resp => {setSumClicked(clicked)})
     }
