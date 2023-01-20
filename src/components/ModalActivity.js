@@ -20,8 +20,8 @@ const ModalActivity = (props) => {
         fetch(idActivity)
     },[idActivity]);
 
-    const handleConfirmDelete = () => {
-        axiosConfig.delete('/activity-groups/'+idActivity,{})
+    const handleConfirmDelete = async () => {
+        await axiosConfig.delete('/activity-groups/'+idActivity,{})
             .then(response => {return response.data})
 
         isShowModal(false)

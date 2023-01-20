@@ -35,15 +35,6 @@ const Activities = () => {
     return(
         <>
             <Navbar />
-            {showModal?
-                <ModalActivity
-                    isShowModal = {setShowModal}
-                    idActivity = {IDActivity}
-                    setSumClicked = {setSumClicked}
-                />
-                :
-                <></>
-            }
             <div className='px-14'>
                 <div className='container grid grid-cols-4 py-4' data-cy="info-page">
                     <div className='col-start-1 col-span-2 inline-flex'>
@@ -88,7 +79,17 @@ const Activities = () => {
                         />
                     )
                 })}
-                <div data-cy="modal-delete"></div>
+                <div data-cy="modal-delete">
+                    {showModal?
+                        <ModalActivity
+                            isShowModal = {setShowModal}
+                            idActivity = {IDActivity}
+                            setSumClicked = {setSumClicked}
+                        />
+                        :
+                        <></>
+                    }
+                </div>
                 <div data-cy="modal-information"></div>
                 </div>
             </div>
