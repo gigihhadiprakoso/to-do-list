@@ -12,6 +12,8 @@ const DetailActivity = () => {
     const [titleModal, setTitleModal] = React.useState('');
     const [activity, setActivity] = React.useState([]);
     const [clickedSaveModal, setClickedSaveModal] = React.useState(0);
+    const [isEditTitle, setIsEditTitle] = React.useState(false);
+    const [changedTitle, setChangedTitle] = React.useState('');
     
     const {id} = useParams();
 
@@ -33,7 +35,7 @@ const DetailActivity = () => {
 
     const renameBtn = () => {
         return (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-4 content-center stroke-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-4 content-center stroke-gray-500" data-cy="todo-title-edit-button">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
             </svg>
         )
@@ -65,10 +67,26 @@ const DetailActivity = () => {
                 <div className='container grid grid-cols-4 py-4' data-cy="info-page">
                     <div className='col-start-1 col-span-2 inline-flex'>
                         <button onClick={handleBackBtn}>{backBtn()}</button>
-                        <label className="text-4xl font-extrabold" data-cy="todo-title">
-                            {activity.title}
-                        </label>
-                        <button onClick={() => {}}>{renameBtn()}</button>
+                        { isEditTitle ?
+                            <input onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle}/>
+                            :
+                            <label className="text-4xl font-extrabold" data-cy="todo-title">
+                                {activity.title}
+                            </label>
+                        }
+                        <button onClick={ async () => {
+                            if(isEditTitle){
+                                const data = {title:changedTitle}
+                                await axiosConfig.patch('activity-groups/'+id,data)
+                                    .then(response => {console.log(response)})
+                            }
+                            
+                            setClickedSaveModal(Math.random())
+                            setChangedTitle(activity.title)
+                            setIsEditTitle(!isEditTitle)
+                        }}>
+                            {renameBtn()}
+                        </button>
                     </div>
                     <div className='col-span-2 relative'>
                         <button 
