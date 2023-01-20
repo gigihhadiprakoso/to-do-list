@@ -84,6 +84,7 @@ const Activities = () => {
                         />
                     )
                 })}
+                <div data-cy="modal-delete"></>
                 </div>
             </div>
         </>
