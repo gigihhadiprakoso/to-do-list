@@ -29,12 +29,11 @@ const TodoItem = (props) => {
         )
     }
 
-    const handleChangeCheckbox = (e) => {
-        axiosConfig.patch('/todo-items/'+id, {is_active:e.target.checked})
+    const handleChangeCheckbox = async (e) => {
+        await axiosConfig.patch('/todo-items/'+id, {is_active:!e.target.checked})
             .then(response => {return response.data})
             .then(resp => {
-                if(resp.is_active) setClassTitle("line-through text-gray-400")
-                else setClassTitle("")
+                setClassTitle( resp.is_active ? "" : "line-through text-gray-400")
             })
     }
 
@@ -56,7 +55,7 @@ const TodoItem = (props) => {
                                 bg-no-repeat bg-center bg-contain 
                                 float-left mr-2
                                 cursor-pointer "
-                            defaultChecked={isActive}
+                            defaultChecked={!isActive}
                             onChange={handleChangeCheckbox}
                             data-cy="todo-item-checkbox"/>
                     </div>
