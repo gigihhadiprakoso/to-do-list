@@ -21,7 +21,18 @@ const DetailActivity = () => {
         axiosConfig.get('/activity-groups/'+id)
             .then(response => {return response.data})
             .then(resp => {setActivity(resp)})
-    },[id,clickedSaveModal])
+
+        const handleClickOutside = (e) => {
+            if(isEditTitle && !["PencilEditTitle","EditTitle"].includes(e.target.id)){
+                setIsEditTitle(false);
+            }
+        };
+        document.addEventListener('click', handleClickOutside, true);
+        return () => {
+            document.removeEventListener('click', handleClickOutside, true);
+        };
+            
+    },[id,clickedSaveModal,isEditTitle])
 
     const navigate = useNavigate();
 
@@ -35,7 +46,7 @@ const DetailActivity = () => {
 
     const renameBtn = () => {
         return (
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-4 content-center stroke-gray-500" data-cy="todo-title-edit-button">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="w-6 h-6 ml-4 content-center stroke-gray-500" data-cy="todo-title-edit-button" id="PencilEditTitle">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 011.13-1.897L16.863 4.487zm0 0L19.5 7.125" />
             </svg>
         )
@@ -48,6 +59,11 @@ const DetailActivity = () => {
     const handleClickAdd = () => {
         setTitleModal('Tambah List Item')
         setShowModal(true)
+    }
+
+    const updateTitle = (val) => {
+        const data = {title:val}
+        axiosConfig.patch('activity-groups/'+id,data)
     }
 
     return(
@@ -68,7 +84,17 @@ const DetailActivity = () => {
                     <div className='col-start-1 col-span-2 inline-flex' data-cy="todo-title">
                         <button onClick={handleBackBtn}>{backBtn()}</button>
                         { isEditTitle ?
-                            <input type="text" onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle} autoFocus/>
+                            <input 
+                                id="EditTitle"
+                                type="text" 
+                                onChange={(e) => {
+                                        setChangedTitle(e.target.value)
+                                        updateTitle(e.target.value)
+                                    }
+                                } 
+                                value={changedTitle} 
+                                autoFocus
+                            />
                             :
                             <label 
                                 className="text-4xl font-extrabold cursor-text" 
@@ -81,15 +107,9 @@ const DetailActivity = () => {
                                 {activity.title}
                             </label>
                         }
-                        <button onClick={ async () => {
-                            if(isEditTitle){
-                                const data = {title:changedTitle}
-                                await axiosConfig.patch('activity-groups/'+id,data)
-                                    .then(response => {console.log(response)})
-                            }
-                            
-                            setClickedSaveModal(Math.random())
-                            setChangedTitle(activity.title)
+                        <button 
+                        onClick={ () => {
+                            setChangedTitle(changedTitle ? changedTitle : activity.title)
                             setIsEditTitle(!isEditTitle)
                         }}>
                             {renameBtn()}
