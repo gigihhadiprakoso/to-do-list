@@ -79,17 +79,17 @@ const Activities = () => {
                         />
                     )
                 })}
-                <div data-cy="modal-delete">
-                    {showModal?
+                {showModal?
+                    <div data-cy="modal-delete">
                         <ModalActivity
                             isShowModal = {setShowModal}
                             idActivity = {IDActivity}
                             setSumClicked = {setSumClicked}
                         />
-                        :
-                        <></>
-                    }
-                </div>
+                    </div>
+                    :
+                    <></>
+                }
                 <div data-cy="modal-information"></div>
                 </div>
             </div>
