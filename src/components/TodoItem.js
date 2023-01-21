@@ -11,7 +11,7 @@ const TodoItem = (props) => {
         setTitleModal,
     } = props
 
-    const [classTitle, setClassTitle] = React.useState(isActive ? "line-through text-gray-400":"" ); 
+    const [classTitle, setClassTitle] = React.useState(isActive ? "" : "line-through text-gray-400" ); 
 
     const deleteBtn = () => {
         return(
@@ -42,7 +42,7 @@ const TodoItem = (props) => {
         <div className="rounded-lg shadow-xl px-10 py-8 overflow-hidden bg-white mb-4 text-xl font-bold" key={id}>
             <div className="grid grid-cols-8">
                 <div className="col-span-6 inline-flex gap-x-6">
-                    <div className="content-center form-check" data-cy="todo-item-checkbox">
+                    <div className="content-center form-check">
                         <input type="checkbox" 
                             className="
                                 form-check-input
