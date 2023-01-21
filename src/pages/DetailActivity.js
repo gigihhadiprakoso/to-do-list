@@ -70,7 +70,14 @@ const DetailActivity = () => {
                         { isEditTitle ?
                             <input type="text" onChange={(e) => {setChangedTitle(e.target.value)}} value={changedTitle} autoFocus/>
                             :
-                            <label className="text-4xl font-extrabold" data-cy="todo-title">
+                            <label 
+                                className="text-4xl font-extrabold cursor-text" 
+                                data-cy="todo-title" 
+                                onClick={() => {
+                                    setChangedTitle(activity.title)
+                                    setIsEditTitle(!isEditTitle)}
+                                }
+                            >
                                 {activity.title}
                             </label>
                         }
