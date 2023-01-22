@@ -1,4 +1,3 @@
-import axiosConfig from '../services/axiosConfig';
 import * as React from 'react';
 
 const ModalDelete = (props) => {
