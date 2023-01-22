@@ -9,12 +9,15 @@ const Card = (props) => {
         id,
         url,
         handleModal,
-        setIDActivity
+        setChosenActivity
     } = props
 
     const handleDelete = () => {
         handleModal(true)
-        setIDActivity(id)
+        setChosenActivity({
+            id: id,
+            title: title
+        })
     }
 
     return(

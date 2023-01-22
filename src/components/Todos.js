@@ -6,6 +6,7 @@ const Todos = (props) =>{
         items,
         setTitleModal,
         isShowModal,
+        isShowModalDelete,
         setRowData
     } = props
 
@@ -21,6 +22,7 @@ const Todos = (props) =>{
                             title={item.title}
                             key={item.id}
                             isShowModal={isShowModal}
+                            isShowModalDelete={isShowModalDelete}
                             setTitleModal={setTitleModal}
                             setRowData={setRowData}
                         />

@@ -5,16 +5,18 @@ import axiosConfig from '../services/axiosConfig';
 import Todos from "../components/Todos";
 import { useNavigate } from 'react-router-dom'
 import ModalTodo from '../components/ModalTodo';
+import ModalDelete from "../components/ModalDelete";
 
 const DetailActivity = () => {
 
-    const [showModal, setShowModal] = React.useState(false);
+    const [showModalEdit, setShowModalEdit] = React.useState(false);
+    const [showModalDelete, setShowModalDelete] = React.useState(false);
     const [titleModal, setTitleModal] = React.useState('');
     const [activity, setActivity] = React.useState([]);
     const [clickedSaveModal, setClickedSaveModal] = React.useState(0);
     const [isEditTitle, setIsEditTitle] = React.useState(false);
     const [changedTitle, setChangedTitle] = React.useState('');
-    const [rowData, setRowData] = React.useState({title:'',priority:''});
+    const [rowData, setRowData] = React.useState({title:'',priority:'',id:null});
     
     const {id} = useParams();
 
@@ -59,7 +61,7 @@ const DetailActivity = () => {
 
     const handleClickAdd = () => {
         setTitleModal('Tambah List Item')
-        setShowModal(true)
+        setShowModalEdit(true)
     }
 
     const updateTitle = (val) => {
@@ -67,18 +69,34 @@ const DetailActivity = () => {
         axiosConfig.patch('activity-groups/'+id,data)
     }
 
+    const processDeleteTodo = async (id) => {
+        await axiosConfig.delete('/todo-items/'+id,{})
+            .then(response => {console.log(response.data)})
+
+        setClickedSaveModal(Math.random())
+    }
+
     return(
         <>
             <Navbar />
-            { showModal ? 
+            { showModalEdit ? 
                 <ModalTodo
-                    isShowModal={setShowModal} 
+                    isShowModal={setShowModalEdit} 
                     title={titleModal}
                     idActivity={id}
                     setClickedSaveModal={setClickedSaveModal}
                     rows={rowData}
                 /> 
                 : 
+                null
+            }
+            { showModalDelete ?
+                <ModalDelete 
+                    isShowModal = {setShowModalDelete}
+                    funcDelete={() => {processDeleteTodo(rowData.id)}}
+                    title={'Apakah anda yakin ingin menghapus item <strong>"'+rowData.title+'"</strong>'}
+                />
+                :
                 null
             }
             <div className='px-14'>
@@ -146,7 +164,8 @@ const DetailActivity = () => {
                     <Todos 
                         items={activity.todo_items}
                         setTitleModal={setTitleModal}
-                        isShowModal={setShowModal}
+                        isShowModal={setShowModalEdit}
+                        isShowModalDelete={setShowModalDelete}
                         setRowData={setRowData}
                     />
                     :

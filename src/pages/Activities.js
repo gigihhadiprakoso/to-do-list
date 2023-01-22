@@ -5,13 +5,13 @@ import Card from '../components/Card';
 import axiosConfig from '../services/axiosConfig';
 import moment from 'moment';
 import 'moment/locale/id';
-import ModalActivity from '../components/ModalActivity';
+import ModalDelete from '../components/ModalDelete';
 
 const Activities = () => {
     const [activities, setActivities] = React.useState([])
     const [sumClicked, setSumClicked] = React.useState(0);
     const [showModal, setShowModal] = React.useState(false);
-    const [IDActivity, setIDActivity] = React.useState('');
+    const [chosenActivity, setChosenActivity] = React.useState({});
 
     React.useEffect(() => {
         const fetch = async () => { 
@@ -30,6 +30,13 @@ const Activities = () => {
         await axiosConfig.post('/activity-groups',data)
             .then(response => {return response.data.data})
             .then(resp => {setSumClicked(clicked)})
+    }
+
+    const processDeleteActivity = async (id) => {
+        await axiosConfig.delete('/activity-groups/'+id,{})
+            .then(response => {console.log(response.data)})
+
+        setSumClicked(Math.random())
     }
 
     return(
@@ -75,15 +82,15 @@ const Activities = () => {
                             id={item.id}
                             url={`/detail/${item.id}`}
                             handleModal = {setShowModal}
-                            setIDActivity={setIDActivity}
+                            setChosenActivity={setChosenActivity}
                         />
                     )
                 })}
                 {showModal?
-                    <ModalActivity
+                    <ModalDelete
                         isShowModal = {setShowModal}
-                        idActivity = {IDActivity}
-                        setSumClicked = {setSumClicked}
+                        funcDelete={() => {processDeleteActivity(chosenActivity.id)}}
+                        title={'Apakah anda yakin ingin menghapus activity <strong>"'+chosenActivity.title+'"</strong>'}
                     />
                     :
                     <></>

@@ -1,14 +1,14 @@
 import axiosConfig from '../services/axiosConfig';
 import * as React from 'react';
 
-const ModalActivity = (props) => {
+const ModalDelete = (props) => {
     const {
-        idActivity,
         isShowModal,
-        setSumClicked
+        funcDelete,
+        title
     } = props
 
-    const [title, setTitle] = React.useState('');
+    /* const [title, setTitle] = React.useState('');
 
     React.useEffect(() => {
         const fetch = (id) => {
@@ -18,14 +18,14 @@ const ModalActivity = (props) => {
         }
 
         fetch(idActivity)
-    },[idActivity]);
+    },[idActivity]); */
 
     const handleConfirmDelete = async () => {
-        await axiosConfig.delete('/activity-groups/'+idActivity,{})
-            .then(response => {return response.data})
+        await funcDelete();
+        // await axiosConfig.delete('/activity-groups/'+idActivity,{})
+        //     .then(response => {return response.data})
 
         isShowModal(false)
-        setSumClicked(Math.random())
     }
 
     return (
@@ -57,7 +57,8 @@ const ModalActivity = (props) => {
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z" />
                             </svg>
                             </div>
-                            Apakah anda yakin ingin menghapus activity <strong>"{title}"</strong>
+                            {/* Apakah anda yakin ingin menghapus activity <strong>"{title}"</strong> */}
+                            {title}
                         </div>
                     </div>
                     
@@ -113,4 +114,4 @@ const ModalActivity = (props) => {
     )
 }
 
-export default ModalActivity;
+export default ModalDelete;

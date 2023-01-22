@@ -10,6 +10,7 @@ const TodoItem = (props) => {
         isActive,
         setTitleModal,
         isShowModal,
+        isShowModalDelete,
         setRowData
     } = props
 
@@ -83,7 +84,19 @@ const TodoItem = (props) => {
                 </div>
                 <div className="col-span-2">
                     <div className="float-right">
-                        <button data-cy="todo-item-delete-button">{deleteBtn()}</button>
+                        <button 
+                            data-cy="todo-item-delete-button"
+                            onClick={() => {
+                                isShowModalDelete(true)
+                                setRowData({
+                                    title:title,
+                                    priority: priority,
+                                    id:id
+                                })
+                            }}
+                        >
+                            {deleteBtn()}
+                        </button>
                     </div>
                 </div>
             </div>
