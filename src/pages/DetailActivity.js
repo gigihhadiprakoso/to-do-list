@@ -14,6 +14,7 @@ const DetailActivity = () => {
     const [clickedSaveModal, setClickedSaveModal] = React.useState(0);
     const [isEditTitle, setIsEditTitle] = React.useState(false);
     const [changedTitle, setChangedTitle] = React.useState('');
+    const [rowData, setRowData] = React.useState({title:'',priority:''});
     
     const {id} = useParams();
 
@@ -75,6 +76,7 @@ const DetailActivity = () => {
                     title={titleModal}
                     idActivity={id}
                     setClickedSaveModal={setClickedSaveModal}
+                    rows={rowData}
                 /> 
                 : 
                 null
@@ -145,6 +147,7 @@ const DetailActivity = () => {
                         items={activity.todo_items}
                         setTitleModal={setTitleModal}
                         isShowModal={setShowModal}
+                        setRowData={setRowData}
                     />
                     :
                     <div data-cy="todo-empty-state"></div>

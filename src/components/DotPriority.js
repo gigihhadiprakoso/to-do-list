@@ -11,7 +11,7 @@ const DotPriority = (props) => {
                 return 'bg-red-500';
             case 'high':
                 return 'bg-orange-500';
-            case 'medium':
+            case 'normal':
                 return 'bg-emerald-600';
             case 'low':
                 return 'bg-cyan-700';

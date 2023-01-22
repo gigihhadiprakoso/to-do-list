@@ -6,15 +6,28 @@ const ModalTodo = (props) => {
         title,
         isShowModal,
         idActivity,
-        setClickedSaveModal
+        setClickedSaveModal,
+        rows
     } = props
 
-    const [bodyReq, setBodyReq] = React.useState({priority:'very-high',activity_group_id:idActivity});
+    let isEditMode = (title.indexOf("Edit") >= 0);
+
+    const [bodyReq, setBodyReq] = React.useState({
+        priority: isEditMode ? rows.priority : 'very-high',
+        title:isEditMode ? rows.title : '', 
+        activity_group_id:idActivity}
+    );
 
     const handleSave = async () => {
-        await axiosConfig.post('todo-items',bodyReq)
-            .then(response => { return response.data })
-            .then(resp => {})
+        if(isEditMode){
+            await axiosConfig.patch('todo-items/'+rows.id, bodyReq)
+                .then(response => { return response.data })
+                .then(resp => {})
+        } else {
+            await axiosConfig.post('todo-items',bodyReq)
+                .then(response => { return response.data })
+                .then(resp => {})
+        }
 
         isShowModal(false)
         setClickedSaveModal(Math.random())
@@ -52,6 +65,7 @@ const ModalTodo = (props) => {
                                             title: e.target.value 
                                         })
                                     }}
+                                    value={bodyReq.title}
                                 />
                             </div>
                             <div data-cy="modal-add-priority-title">
@@ -62,14 +76,16 @@ const ModalTodo = (props) => {
                                             ...bodyReq,
                                             priority: e.target.value 
                                         })
-                                    }} data-cy="modal-add-priority-dropdown">
-                                    <option value="very-high" >
+                                    }} data-cy="modal-add-priority-dropdown"
+                                    defaultValue={bodyReq.priority}
+                                >
+                                    <option value="very-high">
                                         Very High
                                     </option>
                                     <option value="high">
                                         High
                                     </option>
-                                    <option value="medium">
+                                    <option value="normal">
                                         Medium
                                     </option>
                                     <option value="low">
